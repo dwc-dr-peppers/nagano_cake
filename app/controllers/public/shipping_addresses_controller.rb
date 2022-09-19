@@ -18,11 +18,14 @@ class Public::ShippingAddressesController < ApplicationController
 
   def destroy
     @shippingaddress = ShippingAddresses.find(params[:id])
+    @shippingaddress.destroy
+    redirect_to "index"
   end
-  
+
   private
-  
+
   def shippingaddress_params
-    params.require(:shippingaddress)
+    params.require(:shippingaddress).permit(:postcode, :address, :name)
+  end
 
 end
