@@ -1,0 +1,15 @@
+<h3>ジャンル一覧・追加</h3>
+
+<h5 class="genre">ジャンル名
+<%= form_with model:@genre, url: '/admin/genres', method: :post do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit class: 'btn btn-success' %>
+<% end %>
+</h5>
+
+<P>ジャンル</P>
+<% @genres.each do |genre| %>
+<span><%= genre.name %>
+ <%= link_to '編集', edit_admin_genre_path(genre.id), class: "btn btn-sm btn-success" %>
+</span>
+<% end %>
