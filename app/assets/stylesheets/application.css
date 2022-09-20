@@ -1,3 +1,19 @@
+.main-image {
+  width: 80%;
+  height: 80vh;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.carousel-caption {
+  color: #000;
+}
+
+.about {
+  text-align: center;
+}
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
