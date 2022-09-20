@@ -5,11 +5,26 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-   resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
+    root to: 'homes#top'
+    get "home/about" => "homes#about", as: "about"
+    resources :items
+    resources :customers
+    resources :cart_items
+    resources :orders
+    resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
+
+  namespace :admin do
+    root to: 'homes#top'
+    resources :items
+    resources :genres
+    resources :customers
+    resources :orders
+    resources :order_details
+  end
 
 end
