@@ -1,1 +1,20 @@
-<h3>顧客側の商品詳細ページです</h3>
+<h3>顧客側の商品詳細</h3>
+<% if @item.image.attached? %>
+  <%= image_tag @item.image, size: "200x200" %>
+<% else %>
+  <%= image_tag 'no-image', size: "200x200" %>
+<% end %>
+
+<%= @item.name %>
+<%= @item.introduction %>
+<%= (@item.price * 1.1 ).floor %>
+
+<%= form_with model: @cart_item, url: cart_items_path do |f| %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.select :quantitiy, *[1..9] %>
+  <%= f.submit 'カートに入れる' %>
+<% end %>
+
+
+
+
