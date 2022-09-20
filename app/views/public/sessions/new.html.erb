@@ -4,23 +4,9 @@
     <h3 class="head-line title_h2 text-center">会員の方はこちらからログイン</h3>
 
 
-  <% if resource.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)%>
-      </h2>
-      <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-          <% end %>
-      </ul>
-    </div>
- <% end %>
 
 
-  <%= form_with model: @customer, url: customer_registration_path do |f| %>
+  <%= form_with model: @customer, url: customer_session_path do |f| %>
   <div class="field form-group col-xs-9">
   <%= f.label :"メールアドレス", class: "col-sm-4 control-label" %>
   <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-8 form-control-static" %>
