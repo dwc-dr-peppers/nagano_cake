@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
 
+  scope module: :public do
+   resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
-
-  namespace :public do
-   resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
-  end
 
 end

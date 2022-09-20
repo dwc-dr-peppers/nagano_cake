@@ -1,15 +1,15 @@
 class Public::ShippingAddressesController < ApplicationController
 
   def index
-    @shippingaddress = current_customer.address
+    @customer = current_customer
+    #@shipping_addresses = ShippingAddress.all(@customer)
   end
 
   def edit
   end
 
   def create
-    @shippingaddress = ShippingAddresses.new
-    @shippingaddress.save
+    shippingaddress.save
     redirect_to "index"
   end
 
@@ -17,7 +17,7 @@ class Public::ShippingAddressesController < ApplicationController
   end
 
   def destroy
-    @shippingaddress = ShippingAddresses.find(params[:id])
+    @shippingaddress = ShippingAddress.find(params[:id])
     @shippingaddress.destroy
     redirect_to "index"
   end
