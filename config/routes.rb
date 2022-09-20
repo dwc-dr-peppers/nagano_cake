@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :items
     resources :customers
     resources :cart_items
-    resources :orders
+    resources :orders, onry: [:new, :create, :index, :show]
+    post "/orders/confirm" => "orders#confirm"
+    get "/orders/complete" => "orders#complete"
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
