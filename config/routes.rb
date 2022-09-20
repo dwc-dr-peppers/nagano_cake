@@ -17,5 +17,5 @@ Rails.application.routes.draw do
     resources :items
     resources :genres
   end
-
+  
 end
