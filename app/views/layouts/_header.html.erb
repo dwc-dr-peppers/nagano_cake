@@ -1,7 +1,7 @@
 <header>
     <nav class="nav navbar-nav navbar-left title">
       <% if admin_signed_in? %>
-      <%= link_to "NaganoCAKE", admin_top_path, class: "fas fa-birthday-cake" %>
+      <%= link_to "NaganoCAKE", admin_root_path, class: "fas fa-birthday-cake" %>
       <% else %>
       <%= link_to "Nagano cake", root_path, class: "fas fa-birthday-cake" %>
       <% end %>
@@ -15,12 +15,12 @@
             ようこそ、<%= current_customer.family_name %>さん！
           </li>
           <li>
-            <%= link_to "マイページ", customers_path(current_customer), class: "header_btn glyphicon glyphicon-home" %>
+            <%= link_to "マイページ", customer_path(current_customer), class: "header_btn glyphicon glyphicon-home" %>
           </li>
           <li>
             <%= link_to "商品一覧", items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
           </li>
-　　　    
+
           <li>
             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
           </li>
