@@ -1,62 +1,108 @@
-<header>
-    <nav class="nav navbar-nav navbar-left title">
-      <% if admin_signed_in? %>
-      <%= link_to "NaganoCAKE", admin_top_path, class: "fas fa-birthday-cake" %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  　　<% if admin_signed_in? %>
+      <%= link_to "NaganoCAKE", admin_root_path, class: "navbar-brand" %>
+
       <% else %>
-      <%= link_to "Nagano cake", root_path, class: "fas fa-birthday-cake" %>
+      <%= link_to "Nagano cake", root_path, class: "navbar-brand" %>
       <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+ <% if customer_signed_in? %>
+
+
+    <li class="header-name">
+        ようこそ、<%= current_customer.family_name %>さん！
+    </li>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to "マイページ", customer_my_page_path, class: "nav-link" %><span class="sr-only">(current)</span>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "商品一覧", items_path, class: "nav-link" %>
+          <span class="sr-only">(current)</span>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "カート", cart_items_path, class: "nav-link" %>
+          <span class="sr-only">(current)</span>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
+          <span class="sr-only">(current)</span>
+
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
     </nav>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% if customer_signed_in? %>
 
-          <!--カスタマーがログインしている時 -->
-          <li class="header-name">
-            ようこそ、<%= current_customer.family_name %>さん！
-          </li>
-          <li>
-            <%= link_to "マイページ", customer_path(current_customer), class: "header_btn glyphicon glyphicon-home" %>
-          </li>
-          <li>
-            <%= link_to "商品一覧", items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
-          </li>
 
-          <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
-          </li>
 
-       <% elsif admin_signed_in? %>
-          <!-- 管理者がログインしている時 -->
-          <li>
-            <%= link_to "商品一覧", admin_items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
-          </li>
-          <li>
-            <%= link_to "会員一覧", admin_customers_path, class: "header_btn glyphicon glyphicon-user"  %>
-          </li>
-          <li>
-            <%= link_to "注文履歴一覧", admin_orders_path, class: "header_btn glyphicon glyphicon-list-alt" %>
-          </li>
-          <li>
-            <%= link_to "ジャンル一覧", admin_genres_path, class: "header_btn glyphicon glyphicon-th-list" %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
-          </li>
 
-        <% else %>
 
-          <!-- ログインしていない時 -->
-          <li>
-            <%= link_to "about", about_path, class: "header_btn glyphicon glyphicon-briefcase" %>
+ <% elsif admin_signed_in? %>
+    <!-- 管理者がログインしている時 -->
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to "商品一覧", admin_items_path, class: "nav-link" %>
+            <span class="sr-only">(current)</span>
           </li>
-          <li>
-            <%= link_to "商品一覧", items_path, class: "header_btn glyphicon glyphicon-briefcase" %>
+          <li class="nav-item active">
+            <%= link_to "会員一覧", admin_customers_path, class: "nav-link" %>
+          <span class="sr-only">(current)</span>
           </li>
-          <li>
-            <%= link_to "新規登録", new_customer_registration_path, data: {"turbolinks" => false}, class: "header_btn glyphicon glyphicon-edit" %>
+          <li class="nav-item active">
+            <%= link_to "注文履歴一覧", admin_root_path, class: "nav-link" %>
+          <span class="sr-only">(current)</span>
           </li>
-          <li>
-            <%= link_to "ログイン", new_customer_session_path, class: "header_btn glyphicon glyphicon-log-in" %>
+          <li class="nav-item active">
+            <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
+          <span class="sr-only">(current)</span>
           </li>
+          <li class="nav-item active">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+          <span class="sr-only">(current)</span>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
 
-      <% end %>
+  <% else %>
+  <!-- ログインしていない時 -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to "ABOUT", about_path, class: "nav-link" %>
+            <span class="sr-only">(current)</span>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "商品一覧", items_path, class: "nav-link" %>
+          <span class="sr-only">(current)</span>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "新規登録", new_customer_registration_path, data: {"turbolinks" => false}, class: "nav-link" %>
+          <span class="sr-only">(current)</span>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
+          <span class="sr-only">(current)</span>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+ <% end %>
+</nav>

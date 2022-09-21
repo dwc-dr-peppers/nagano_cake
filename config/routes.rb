@@ -10,8 +10,14 @@ Rails.application.routes.draw do
     get "customers/my_page" => "customers#show"
     
     resources :items
-    resources :cart_items
+
     resources :customers
+    resources :cart_items do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+
     resources :orders
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
   end
@@ -19,6 +25,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
+
 
   namespace :admin do
     root to: 'homes#top'

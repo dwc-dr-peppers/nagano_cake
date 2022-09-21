@@ -1,6 +1,4 @@
-<% provide(:title, "ログイン") %>
-<div class="row">
-  <div class="col-xs-offset-1 col-xs-11">
+<div class="text-center">
     <h3 class="head-line title_h2 text-center">会員の方はこちらからログイン</h3>
 
 
@@ -8,16 +6,16 @@
 
   <%= form_with model: @customer, url: customer_session_path do |f| %>
   <div class="field form-group col-xs-9">
-  <%= f.label :"メールアドレス", class: "col-sm-4 control-label" %>
-  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-8 form-control-static" %>
+  <%= f.label :"メールアドレス", class: "col-sm-4 control-label" %><br>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-4 form-control-static" %>
   </div>
 
   <div class="field form-group col-xs-9">
-  <%= f.label :"パスワード", class: "col-sm-4 control-label" %>
-  <%= f.password_field :password, autocomplete: "current-password", class: "col-sm-8 form-control-static" %>
+  <%= f.label :"パスワード", class: "col-sm-4 control-label" %><br>
+  <%= f.password_field :password, autocomplete: "current-password", class: "col-sm-4 form-control-static" %>
   </div>
 
-  <div class="actions col-xs-9 pull-right">
+  <div class="actions col-xs-5 pull-right">
   <%= f.submit "ログイン", class: "btn btn-success btn-lg col-xs-7" %>
   </div>
 
@@ -29,4 +27,4 @@
      </p>
   </div>
  </div>
-</div>
+
