@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     get "home/about" => "homes#about", as: "about"
     resources :items
     resources :customers
-    resources :cart_items
+    resources :cart_items do
+      collection do
+        delete 'destroy_all'
+      end
+    end
     resources :orders, onry: [:new, :create, :index, :show]
     post "/orders/confirm" => "orders#confirm"
     get "/orders/complete" => "orders#complete"
@@ -19,6 +23,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
+
 
   namespace :admin do
     root to: 'homes#top'
