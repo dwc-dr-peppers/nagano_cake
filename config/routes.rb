@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get "home/about" => "homes#about", as: "about"
+    get "customers/my_page" => "customers#show"
+    
     resources :items
-    resources :customers
     resources :cart_items
+    resources :customers
     resources :orders
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
   end
