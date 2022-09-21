@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "home/about" => "homes#about", as: "about"
     get "customers/my_page" => "customers#show"
-    
+    get "customers/information/edit" => "customers#edit"
+    get "customers/unsubscribe" => "customers#unsubscribe"
     resources :items
 
     resources :customers
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
-
     resources :orders
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
   end

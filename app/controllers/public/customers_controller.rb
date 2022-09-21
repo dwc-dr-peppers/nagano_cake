@@ -1,17 +1,24 @@
 class Public::CustomersController < ApplicationController
 
 def show
-  @customer = Customer.find(params[:id])
+  @customer = current_customer
 end
 
 def edit
-  @customer = Customer.find(params[:id])
+  @customer = current_customer
 end
 
 def update
-  @customer = Customer.find(params[:id])
-  @user.update
+  @customer = current_customer
+  @customer.update(customer_params)
+  redirect_to customers_my_page_path(@customer)
 end
 
+def unsubscribe
+end
 
+private
+def customer_params
+  params.require(:customer).permit(:family_name, :first_name_kana, :family_name_kana, :first_name_kana, :postcode, :address, :telephone_number, :email)
+end
 end
