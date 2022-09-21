@@ -1,0 +1,30 @@
+<div class="text-center">
+    <h3 class="head-line title_h2 text-center">会員の方はこちらからログイン</h3>
+
+
+
+
+  <%= form_with model: @customer, url: customer_session_path do |f| %>
+  <div class="field form-group col-xs-9">
+  <%= f.label :"メールアドレス", class: "col-sm-4 control-label" %><br>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-4 form-control-static" %>
+  </div>
+
+  <div class="field form-group col-xs-9">
+  <%= f.label :"パスワード", class: "col-sm-4 control-label" %><br>
+  <%= f.password_field :password, autocomplete: "current-password", class: "col-sm-4 form-control-static" %>
+  </div>
+
+  <div class="actions col-xs-5 pull-right">
+  <%= f.submit "ログイン", class: "btn btn-success btn-lg col-xs-7" %>
+  </div>
+
+  <% end %>
+  <div class="col-xs-9">
+   <h5 class="head-line title_h2 text-center">登録がお済みではない方</h5>
+     <p class="new-link">
+        <%= link_to "こちら", new_registration_path(resource_name), data: {"turbolinks" => false}, class: "btn-link" %>から新規登録を行ってください。
+     </p>
+  </div>
+ </div>
+
