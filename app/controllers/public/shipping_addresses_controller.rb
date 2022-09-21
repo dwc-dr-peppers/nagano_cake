@@ -2,7 +2,6 @@ class Public::ShippingAddressesController < ApplicationController
 
   def index
     @shipping_addresses = current_customer.shipping_addresses.all
-    #@shipping_addresses = ShippingAddress.all(params[:customer_id])
   end
 
   def edit
@@ -11,20 +10,28 @@ class Public::ShippingAddressesController < ApplicationController
 
   def create
     shippingaddress = ShippingAddress.new(shippingaddress_params)
-    shippingaddress.save
-    redirect_to shipping_addresses_path
+    if shippingaddress.save
+      redirect_to shipping_addresses_path
+    else
+      @shipping_addresses = current_customer.shipping_addresses.all
+      render :index
+    end
   end
 
   def update
     shippingaddress = ShippingAddress.find(params[:id])
-    shippingaddress.update(shippingaddress_params)
-    redirect_to shipping_addresses_path
+    if shippingaddress.update(shippingaddress_params)
+      redirect_to shipping_addresses_path
+    else
+      @shippingaddress = ShippingAddress.find(params[:id])
+      render :edit
+    end
   end
 
   def destroy
     @shippingaddress = ShippingAddress.find(params[:id])
     @shippingaddress.destroy
-    redirect_to "index"
+    redirect_to shipping_addresses_path
   end
 
   private

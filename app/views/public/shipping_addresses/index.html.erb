@@ -32,13 +32,13 @@
   </div>
 
       <div class="row">
-        <table class="table-secondary table-bordered">
-          <thead>
+        <table class="table table-bordered">
+          <thead class="table table-secondary">
             <tr>
               <th>郵便番号</th>
               <th>住所</th>
               <th>宛名</th>
-              <th></th>
+              <th colspan="1"></th>
             </tr>
           </thead>
 
@@ -50,7 +50,7 @@
                 <th><%= shipping_address.name %></th>
                 <th>
                   <%= link_to "編集する", edit_shipping_address_path(shipping_address.id), class:"btn btn-success" %>
-                  <%= link_to "削除する", shipping_address_path(shipping_address.id),　method: :delete, class:"btn btn-danger" %>
+                  <%= link_to "削除する", shipping_address_path(shipping_address.id), method: :delete, class:"btn btn-danger" %>
                 </th>
               </tr>
             </tbody>
