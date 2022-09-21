@@ -1,6 +1,6 @@
 Admin.create!(
   email: 'admin@example',
-  encrypted_password: '123456'
+  password: '123456'
   )
 
 # This file should contain all the record creation needed to seed the database with its default values.

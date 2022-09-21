@@ -1,7 +1,7 @@
  <div class="text-center">
     <h3 class="head-line title_h2 text-center">管理者ログイン</h3>
 
-  <%= form_with model: @admin, url: customer_session_path do |f| %>
+  <%= form_with model: @admin, url: admin_session_path do |f| %>
   <% if @admin.errors.any? %>
   <div id="error_explanation">
     <h3><%= pluralize(@admin.errors.count, "error") %> prohibited this admin from being saved:</h3>
