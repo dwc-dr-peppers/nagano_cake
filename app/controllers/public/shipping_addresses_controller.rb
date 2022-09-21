@@ -1,8 +1,8 @@
 class Public::ShippingAddressesController < ApplicationController
 
   def index
-    @customer = current_customer
-    @shipping_addresses = ShippingAddress.all#(@customer)
+    @shipping_addresses = current_customer.shipping_addresses.all
+    #@shipping_addresses = ShippingAddress.all(params[:customer_id])
   end
 
   def edit
@@ -10,13 +10,15 @@ class Public::ShippingAddressesController < ApplicationController
   end
 
   def create
-    @shippingaddress = ShippingAddress.new(shippingaddress_params)
-    @shippingaddress.save
-    redirect_to "index"
+    shippingaddress = ShippingAddress.new(shippingaddress_params)
+    shippingaddress.save
+    redirect_to shipping_addresses_path
   end
 
   def update
-    @shippingaddress = ShippingAddress
+    shippingaddress = ShippingAddress.find(params[:id])
+    shippingaddress.update(shippingaddress_params)
+    redirect_to shipping_addresses_path
   end
 
   def destroy
@@ -28,7 +30,7 @@ class Public::ShippingAddressesController < ApplicationController
   private
 
   def shippingaddress_params
-    params.require(:shippingaddress).permit(:postcode, :address, :name)
+    params.require(:shipping_address).permit(:postcode, :address, :name, :customer_id)
   end
 
 end

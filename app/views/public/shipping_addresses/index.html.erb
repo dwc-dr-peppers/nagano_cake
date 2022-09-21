@@ -6,7 +6,8 @@
   </div>
 
   <div>
-    <%= form_with model: ShippingAddress.new, url: shipping_addresses_path do |f| %>
+    <%= form_with model: ShippingAddress.new, url: shipping_addresses_path, method: :post do |f| %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
       <div class="row row-cols-12 from-group">
         <div class="col-3"><%= f.label "郵便番号(ハイフンなし)", class:"form-label" %></div>
         <div class="col-3"><%= f.text_field :postcode %></div>
@@ -41,19 +42,19 @@
             </tr>
           </thead>
 
-          <!--% @shipping_addresses.each do |shipping_address| %>
+          <% @shipping_addresses.each do |shipping_address| %>
             <tbody class="table table-bordered">
               <tr>
-                <th>%= shipping_address.postcode %></th>
-                <th>%= shipping_address.address %></th>
-                <th>%= shipping_address.name %></th>
+                <th><%= shipping_address.postcode %></th>
+                <th><%= shipping_address.address %></th>
+                <th><%= shipping_address.name %></th>
                 <th>
-                  %= link_to "編集する", edit_shipping_address_path(current_customer.shipping_address.id), class:"btn btn-success" %>
-                  %= link_to "削除する", shipping_address_path(current_customer.shipping_address.id),　method: :delete, class:"btn btn-danger" %>
+                  <%= link_to "編集する", edit_shipping_address_path(shipping_address.id), class:"btn btn-success" %>
+                  <%= link_to "削除する", shipping_address_path(shipping_address.id),　method: :delete, class:"btn btn-danger" %>
                 </th>
               </tr>
             </tbody>
-          % end %-->
+          <% end %>
         </table>
       </div>
   </div>
