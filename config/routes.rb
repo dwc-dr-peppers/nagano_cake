@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     get "home/about" => "homes#about", as: "about"
     resources :items
     resources :customers
-    resources :cart_items
+    resources :cart_items do
+      collection do
+        delete 'destroy_all'
+      end
+    end
     resources :orders
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
   end
