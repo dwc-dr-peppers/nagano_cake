@@ -19,8 +19,10 @@
         <td><%= cart_item.item.name %></td>
         <td><%= cart_item.item.with_tax_price %></td>
         <td>
-          
-            <%= cart_item.quantitiy %>
+          <%= form_with model: cart_item, url: cart_items_path do |f| %>
+            <%= f.select :quantitiy, options_from_collection_for_select(CartItem.find(params[:id]), :quantitiy, :quantitiy) %>
+          <% end %>
+          <%= cart_item.quantitiy %>
         </td>
         <td><%= cart_item.subtotal %></td>
         <td><%= link_to '削除する', cart_item_path(cart_item), method: :delete %></td>
