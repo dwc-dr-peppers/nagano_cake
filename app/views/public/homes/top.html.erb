@@ -38,17 +38,36 @@
   </div>
 </div>
 
+      <div class="box list-group">
+        <h4>ジャンル検索</h4>
+            <% @genres.each do |genre| %>
+                <%= link_to items_path(genre_id: genre.id),class: "list-group-item" do %>
+                <%= genre.name %>
+                <% end %>
+            <% end %>
+      </div>
+
 
 
     <div class="col-lg-10">
 			<h3 style="font-weight: bold;">新着商品 <i class="fas fa-shopping-cart"></i></h3>
-			<div class="items">
 
-
-    </div>
-  </div>
-</div>
-
+              <div class="items">
+              	<% @items.each do |i| %>
+              		<%= link_to item_path(i) do %>
+              		<div class="itembox">
+              			<%= image_tag i, :image %>
+              			<dl>
+              				<dt>商品名</dt>
+              					<dd><%= i.name %></dd>
+              				<dt>価格</dt>
+              					<dd>¥ <%= i.price %> </dd>
+              			</dl>
+              		</div>
+              		<% end %>
+              	<% end %>
+              </div>
+              <div class="items-more"><%= link_to "全ての商品を見る>>", items_path %></div>
 
   </div>
 </div>
