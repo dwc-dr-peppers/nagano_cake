@@ -22,6 +22,23 @@
 .head-line {
   margin: 30px auto;
 }
+
+
+.top_new {
+   margin: 50px 100px;
+   /*justify-content: flex-end;*/
+
+}
+
+.item_box {
+  margin: 0 10px 10px;
+   display: flex;
+   /*justify-content: flex-end;*/
+}
+
+.new_arrival {
+   margin: 10px 10px 10px;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
