@@ -70,10 +70,11 @@
         <%= f.submit "新規登録",class: 'btn btn-success btn-lg col-xs-7' %>
       </div>
     <% end %>
+  </div>
 
     <div class="head-line">
-      <h2 class="head-line title_h2 text-center">既に登録済みの方</h2>
-      <p class="new-link text-center"> <%= link_to "こちら", new_session_path(resource_name), data: {"turbolinks" => false}, class: "btn-link" %>からログインしてください。</p>
+      <h2>既に登録済みの方</h2>
+      <p> <%= link_to "こちら", new_session_path(resource_name), data: {"turbolinks" => false}, class: "btn-link" %>からログインしてください。</p>
     </div>
-  </div>
-</div>
+
+
