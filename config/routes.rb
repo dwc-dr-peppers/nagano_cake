@@ -9,10 +9,11 @@ Rails.application.routes.draw do
     get "home/about" => "homes#about", as: "about"
     get "customers/my_page" => "customers#show"
     get "customers/information/edit" => "customers#edit"
+    patch "customers/information" => "customers#update"
     get "customers/unsubscribe" => "customers#unsubscribe"
+    patch "/customers/withdraw" => "customers#withdraw"
     resources :items
 
-    resources :customers
     resources :cart_items do
       collection do
         delete 'destroy_all'
