@@ -1,0 +1,29 @@
+<div class="container">
+
+  <h4>注文情報確認</h4>
+
+  <%= @cart_items.each do |cart|%>
+    <table class="table table-bordered">
+      <thead class="table table-secondary">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><%= cart.item.name %></td>
+          <td><%#= cart.item.with_tax_price %></td>
+          <td><%= cart.quantitiy%></td>
+          <td><%= cart.subtotal %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+  <div>支払方法</div>
+
+  <div>お届け先</div>
+</div>
