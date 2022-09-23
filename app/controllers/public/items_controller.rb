@@ -5,4 +5,9 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
   end
 
+  def index
+    @item_count = Item.count
+    @items = Item.all
+  end
+
 end
