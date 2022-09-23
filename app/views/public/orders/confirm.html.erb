@@ -19,24 +19,25 @@
           <td><%= cart.item.with_tax_price.to_s(:delimited) %></td>
           <td><%= cart.quantitiy%></td>
           <td><%= cart.subtotal.to_s(:delimited) %></td>
-          <%# @total_amount += cart.subtotal %>
         </tr>
+          <% @total += cart.subtotal %>
       </tbody>
     <% end %>
     </table>
 
+    <% @totalamount = @total + @postage %>
     <table>
       <tr class="table table-bordered">
         <td class="table table-bordered table-secondary">送料</td>
-        <td class="table"><%= 800 %></td>
+        <td class="table"><%= @postage %></td>
       </tr>
       <tr class="table table-bordered">
         <td class="table table-secondary">商品合計</td>
-        <td><%#= @total_amount.to_s(:delimited) %></td>
+        <td><%= @total.to_s(:delimited) %></td>
       </tr>
       <tr class="table table-bordered">
         <td class="table table-secondary">請求金額</td>
-        <td></td>
+        <td><%= @totalamount.to_s(:delimited) %></td>
       </tr>
     </table>
 

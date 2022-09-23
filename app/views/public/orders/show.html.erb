@@ -1,7 +1,7 @@
 <div>
-  
+
   <h4>注文履歴詳細</h4>
-  
+
   <div>
     <strong>注文情報</strong>
     <table class="table table-bordered">
@@ -29,14 +29,14 @@
       </tbody>
     </table>
   </div>
-  
+
   <div>
     <strong>請求情報</strong>
     <table class="table table-bordered">
       <tbody>
         <tr>
           <td class="table table-secondary"></td>
-          <td><%= @order. %></td>
+          <td><%= @order %></td>
         </tr>
         <tr>
           <td class="table table-secondary"></td>
@@ -49,7 +49,7 @@
       </tbody>
     </table>
   </div>
-  
+
   <div>
     <strong>注文内容</strong>
     <table class="table table-bordered">
@@ -61,7 +61,7 @@
           <td>小計</td>
         </tr>
       </thead>
-      
+
       <%= @order.item.each do |item| %>
       <tbody>
         <tr>
@@ -71,6 +71,7 @@
           <td></td>
         </tr>
       </tbody>
+      <% end %>
     </table>
   </div>
 </div>
