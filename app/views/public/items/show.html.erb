@@ -1,20 +1,39 @@
-<h3>顧客側の商品詳細</h3>
-<% if @item.image.attached? %>
-  <%= image_tag @item.image, size: "200x200" %>
-<% else %>
-  <%= image_tag 'no-image', size: "200x200" %>
-<% end %>
+<div class="container">
+  <div class="row my-5">
 
-<%= @item.name %>
-<%= @item.introduction %>
-<%= (@item.price * 1.1 ).floor %>
+    <div class="col-3">
+      <p>ジャンル検索</p>
+    </div>
 
-<%= form_with model: @cart_item, url: cart_items_path do |f| %>
-  <%= f.hidden_field :item_id, :value => @item.id %>
-  <%= f.hidden_field :customer_id, :value => current_customer.id %>
-  <%= f.select :quantitiy, *[1..10] %>
-  <%= f.submit 'カートに入れる' %>
-<% end %>
+    <div class="col-9 d-flex">
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "300x200" %>
+      <% else %>
+        <%= image_tag 'no-image', size: "300x200" %>
+      <% end %>
+
+      <div class="ml-5">
+        <h3><%= @item.name %></h3>
+        <p><%= @item.introduction %></p>
+        <h5 class="mt-5">¥ <%= (@item.price * 1.1 ).floor.to_s(:delimited) %><small class="text-muted">(税込)</small></h5>
+
+        <p><%= alert %></p>
+
+        <% if customer_signed_in? %>
+          <div class="my-4 px-2">
+            <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.hidden_field :customer_id, :value => current_customer.id %>
+              <%= f.select :quantitiy, *[1..10] %>
+              <%= f.submit 'カートに入れる', class:"btn btn-success ml-5" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+ </div>
+</div>
 
 
 
