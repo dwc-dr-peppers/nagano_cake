@@ -7,7 +7,7 @@ class Public::CartItemsController < ApplicationController
 
   def update
     cart_item = CartItem.find(params[:id])
-    cart_item.update
+    cart_item.update(cart_item_params)
     redirect_to cart_items_path
   end
 
@@ -27,8 +27,11 @@ class Public::CartItemsController < ApplicationController
       if cart_item.present?
         #カートに同商品があった場合は数量を追加
         cart_item.quantitiy += cart_item_params[:quantitiy].to_i
-        cart_item.save
-        redirect_to cart_items_path
+        if cart_item.save #10個までなら保存できる
+          redirect_to cart_items_path
+        else #11個以上はカートに追加できない
+          redirect_to item_path(cart_item.item), alert: '1回の注文では同商品は合計で10個までしか注文できません'
+        end
       else
         #なかったらレコードを追加
         cart_item = CartItem.new(cart_item_params)
