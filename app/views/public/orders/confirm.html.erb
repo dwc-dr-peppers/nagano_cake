@@ -2,7 +2,6 @@
 
   <h4>注文情報確認</h4>
 
-  <%= @cart_items.each do |cart|%>
     <table class="table table-bordered">
       <thead class="table table-secondary">
         <tr>
@@ -13,17 +12,51 @@
         </tr>
       </thead>
 
-      <tbody>
+    <% @cart_items.each do |cart|%>
+      <tbody class="table table-bordered">
         <tr>
           <td><%= cart.item.name %></td>
-          <td><%= cart.item.with_tax_price %></td>
+          <td><%= cart.item.with_tax_price.to_s(:delimited) %></td>
           <td><%= cart.quantitiy%></td>
-          <td><%= cart.subtotal %></td>
+          <td><%= cart.subtotal.to_s(:delimited) %></td>
+          <%# @total_amount += cart.subtotal %>
         </tr>
       </tbody>
+    <% end %>
     </table>
-  <% end %>
+
+    <table>
+      <tr class="table table-bordered">
+        <td class="table table-bordered table-secondary">送料</td>
+        <td class="table"><%= 800 %></td>
+      </tr>
+      <tr class="table table-bordered">
+        <td class="table table-secondary">商品合計</td>
+        <td><%#= @total_amount.to_s(:delimited) %></td>
+      </tr>
+      <tr class="table table-bordered">
+        <td class="table table-secondary">請求金額</td>
+        <td></td>
+      </tr>
+    </table>
+
+  <%= form_with model: @order, url: orders_path, method: :post do |f| %>
   <div>支払方法</div>
+    <div>
+      <% if params[:order][:payment_method] == "credit_card" %>
+        <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+      <% else %>
+        <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+      <% end %>
+    </div>
 
   <div>お届け先</div>
+      <div>
+        <%= "〒" %>
+        <%= @order.postcode %>
+        <%= @order.address %>
+        <%= @order.shipping_name %>
+      </div>
+      <%= f.submit "注文を確定する", class:"btn btn-success" %>
+      <% end %>
 </div>
