@@ -8,6 +8,8 @@ class Public::ItemsController < ApplicationController
   def index
     @item_count = Item.count
     @items = Item.all
+    @genres = Genre.all
+    @items = params[:name].present? ? Genre.find(params[:name]).items : Item.all
   end
 
 end

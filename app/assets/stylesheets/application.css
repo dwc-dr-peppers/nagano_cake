@@ -22,6 +22,23 @@
 .head-line {
   margin: 30px auto;
 }
+
+.check_box {
+    width: 12%;
+    padding: 0.5px 1px;
+    margin: 50px 50px 10px;
+    border: double 5px #a9a9a9;
+}
+
+.check_box h5 {
+    margin: 10px 10px 10px;
+}
+
+.tag-box {
+    margin: 5px 0 5px 5px;
+    padding: 5px 0 5px 5px;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

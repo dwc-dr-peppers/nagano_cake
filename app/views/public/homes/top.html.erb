@@ -39,16 +39,29 @@
 </div>
 
 
-
-    <div class="col-lg-10">
-			<h3 style="font-weight: bold;">新着商品 <i class="fas fa-shopping-cart"></i></h3>
-			<div class="items">
-
-
-    </div>
-  </div>
+<div class="check_box">
+  <h5>ジャンル検索</h5>
+  <%= form_with model: @genre, class: 'boards__searchForm' do %>
+  <% @genres.each do |genre| %>
+  <div class="tag-box">
+        <%= link_to genre.name, items_path(name: genre.id) %>
+      </div>
+  <% end %>
+      <div class="tag-box">
+        <%= link_to "全ての商品", items_path %>
+      </div>
+<% end %>
 </div>
 
 
-  </div>
-</div>
+
+
+
+
+
+  <!--  <div class="col-lg-10">-->
+		<!--	<h3 style="font-weight: bold;">新着商品 <i class="fas fa-shopping-cart"></i></h3>-->
+		<!--	<div class="items">-->
+  <!--  </div>-->
+  <!--</div>-->
+
