@@ -33,6 +33,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.payment_way = params[:order][:payment_method]
     @order.customer_id = current_customer.id
+    @order.save
     if params[:order][:address_select] == "3"
       shipping_address = ShippingAddress.new
       shipping_address.postcode = @order.postcode
@@ -49,12 +50,12 @@ class Public::OrdersController < ApplicationController
       order_details.order_id = @order.id
       order_details.save
     end
-    @order.save
     redirect_to orders_complete_path
     cart_items.destroy_all
   end
 
   def show
+    @order = order.find(params[:id])
   end
 
   def index

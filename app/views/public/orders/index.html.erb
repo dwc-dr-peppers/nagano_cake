@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <h4>注文履歴一覧</h4>
   <div>
     <table class="table table-bordered">
@@ -27,9 +27,10 @@
               <h6><%= detail.item.name %></h6>
             <% end %>
           </td>
-          <td><%= order.total_amount %></td>
+          <td><%= order.total_amount.to_s(:delimited) %></td>
           <td><%= order.status %></td>
-          <td><%= link_to '表示する', url: order_path(order.id), class:"btn btn-primary" %></td>
+          <% order do |f| %>
+          <td><%= f.submit "表示する", url: order_path(order.id), class:"btn btn-primary" %></td>
         </tr>
       <% end %>
       </tbody>
