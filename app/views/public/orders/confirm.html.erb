@@ -46,18 +46,29 @@
     <div>
       <% if params[:order][:payment_method] == "credit_card" %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+        <%= f.hidden_field :payment_method, :value => Order.payment_methods.key(0) %>
       <% else %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+        <%= f.hidden_field :payment_method, :value => Order.payment_methods.key(1) %>
       <% end %>
     </div>
+    <%# 新しいお届け先のデータ %>
+    <% if params[:order][:address_select] == "3" %>
+      <%= f.hidden_field :address_select, :value => 3 %>
+    <% end %>
 
   <div>お届け先</div>
       <div>
         <%= "〒" %>
         <%= @order.postcode %>
+        <%= f.hidden_field :postcode, :value => @order.postcode %>
         <%= @order.address %>
+        <%= f.hidden_field :address, :value => @order.address %>
         <%= @order.shipping_name %>
+        <%= f.hidden_field :shipping_name, :value => @order.shipping_name %>
       </div>
+        <%= f.hidden_field :postage, :value => @postage %>
+        <%= f.hidden_field :total_amount, :value => @totalamount %>
       <%= f.submit "注文を確定する", class:"btn btn-success" %>
       <% end %>
 </div>

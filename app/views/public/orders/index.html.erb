@@ -1,7 +1,7 @@
 <div>
   <h4>注文履歴一覧</h4>
   <div>
-    <table eclass="table table-bordered">
+    <table class="table table-bordered">
       <thead class="table table-secondary">
         <tr>
           <td>注文日</td>
@@ -12,28 +12,28 @@
           <td>注文詳細</td>
         </tr>
       </thead>
-      
-      <%= @orders.each do |order| %>
-      <tbody eclass="table table-bordered">
+
+      <tbody class="table table-bordered">
+      <% @orders.each do |order| %>
         <tr>
           <td></td>
           <td>
-            <h6>〒 order.postcode</h6>
-            <h6>order.address</h6>
-            <h6>order.shipping_name</h6>
+            <h6>〒 <%= order.postcode %></h6>
+            <h6><%= order.address %></h6>
+            <h6><%= order.shipping_name %></h6>
           </td>
-          <%= order.item.each do |item| %>
           <td>
-            <h6>item.name</h6>
+            <% order.order_details.each do |detail| %>
+              <h6><%= detail.item.name %></h6>
+            <% end %>
           </td>
-          <% end %>
-          <td>order.total_amount</td>
-          <td>order.status</td>
-          <td><%= link_to '表示する', url: order_path(order.id), class:"btn btn-primary" %>></td>
+          <td><%= order.total_amount %></td>
+          <td><%= order.status %></td>
+          <td><%= link_to '表示する', url: order_path(order.id), class:"btn btn-primary" %></td>
         </tr>
-      </tbody>
       <% end %>
-      
+      </tbody>
+
     </table>
   </div>
 </div>
