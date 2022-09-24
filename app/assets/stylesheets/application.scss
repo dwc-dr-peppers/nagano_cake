@@ -2,6 +2,18 @@
     display: unset;
 }
 
+.footer {
+  text-align: center;
+}
+
+.item_box {
+  display: flex;
+}
+
+.top_new {
+  margin: 0 50px 0;
+}
+
 .main-image {
   width: 80%;
   height: 80vh;
@@ -28,10 +40,13 @@
 }
 
 .check_box {
-    width: 12%;
-    padding: 0.5px 1px;
-    margin: 50px 50px 10px;
+    width: 90%;
+    margin: 30px 0 0;
     border: double 5px #a9a9a9;
+}
+
+.top_under {
+  margin: 50px 0 0 0;
 }
 
 .check_box h5 {
@@ -43,11 +58,16 @@
     padding: 5px 0 5px 5px;
 }
 
+.items-more {
+  text-align:right;
+}
+
 .check_box_index {
     width: 60%;
     padding: 0.5px 1px;
     margin: 50px 50px 10px;
     border: double 5px #a9a9a9;
+}
 
 .not-sale-img {
   opacity: 0.3;
