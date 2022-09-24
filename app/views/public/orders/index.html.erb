@@ -29,8 +29,7 @@
           </td>
           <td><%= order.total_amount.to_s(:delimited) %></td>
           <td><%= order.status %></td>
-          <% order do |f| %>
-          <td><%= f.submit "表示する", url: order_path(order.id), class:"btn btn-primary" %></td>
+          <td><%= link_to '表示する', order_path(order.id), class:"btn btn-primary" %></td>
         </tr>
       <% end %>
       </tbody>
