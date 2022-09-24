@@ -1,10 +1,18 @@
-<h3>ジャンル編集</h3>
+<div class="container mx-5">
+  <div class="row col-12 my-4">
+<h4><span class="text-black bg-light px-3 ">ジャンル編集</span></h4>
+  </div>
+</div>
 
-<h5>ジャンル名</h5>
+<div class="container mx-5">
+  <div class="row col-7">
+  <div class="form-group">
 <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
-
-<%= f.text_field :name %>
-
-<%= f.submit "変更を保存", class: 'btn btn-success' %>
+  <%= f.label "ジャンル名", class: "h6 font-weight-bold mr-5" %>
+  <%= f.text_field :name %>
+  <%= f.submit "変更を保存", class: 'btn btn-success font-weight-bold px-5 ml-5' %>
 <% end %>
+  </div>
+  </div>
+</div>
 

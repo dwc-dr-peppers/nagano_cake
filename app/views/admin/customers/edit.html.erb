@@ -1,20 +1,18 @@
-  <div class="container mx-7">
-    <div class="row my-4">
-<h4><span class="text-black bg-light">会員情報編集</span></h4>
-    </div>
-  </div>
-<div class="container mx-5">
-  <div class="col-12">
-<%= form_with model: @customer, url: customers_information_path(@customer), method: :patch do |f| %>
+<div class="container">
+<h3><span class="text-black bg-light"><%= @customer.full_name %>さんの会員編集</span></h3>
 
+  
+
+<%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
+ 
   <div class="form-group">
   <%= f.label :"氏名", class: "col-sm-2 control-label" %>
-  <%= f.text_field :family_name, class: "mr-5" %>
+  <%= f.text_field :family_name %>
   <%= f.text_field :first_name %>
   </div>
   <div class="form-group">
   <%= f.label :"フリガナ", class: "col-sm-2 control-label" %>
-  <%= f.text_field :family_name_kana, class: "mr-5" %>
+  <%= f.text_field :family_name_kana %>
   <%= f.text_field :first_name_kana %>
   </div>
   <div class="form-group">
@@ -23,7 +21,7 @@
   </div>
   <div class="form-group">
   <%= f.label :"住所", class: "col-sm-2 control-label" %>
-  <%= f.text_field :address, class: "col-sm-7 px-0" %>
+  <%= f.text_field :address %>
   </div>
   <div class="form-group">
   <%= f.label :"電話番号", class: "col-sm-2 control-label" %>
@@ -33,12 +31,19 @@
   <%= f.label :"メールアドレス", class: "col-sm-2 control-label" %>
   <%= f.text_field :email %>
   </div>
+
   <div class="form-group">
-  <%= f.label :"　", class: "col-sm-2 control-label" %>
-  <%= f.submit "変更内容を保存する",class: 'btn btn-success btn-md col-sm-3' %>
-  <%= link_to '退会する', customers_unsubscribe_path, class: "btn btn-danger btn-md col-sm-2 ml-5" %>
+  <input type="radio" id="contactChoice1"
+    name="contact" value="is_deleted" checked>
+    <label for="contactChoice1">登録</label>
+
+  <input type="radio" id="contactChoice2"
+    name="contact" value="is_deleted">
+    <label for="contactChoice2">退会</label>
+  </div>
+
+  <div class="form-group">
+  <%= f.submit "変更を保存",class: 'btn btn-success btn-md col-sm-2' %>
   </div>
 <% end %>
-  </div>
 </div>
-
