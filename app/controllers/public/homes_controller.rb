@@ -2,6 +2,7 @@ class Public::HomesController < ApplicationController
 
 
   def top
+   @genres = Genre.all
    #@genres = Genres.all
    @items = Item.order('id DESC').limit(4)
   end

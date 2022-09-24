@@ -7,4 +7,8 @@ class ShippingAddress < ApplicationRecord
   validates :address, presence: true
   validates :name, presence: true
 
+  def address_display
+    '〒' + postcode + ' ' + address + ' ' + name
+  end
+
 end

@@ -1,0 +1,40 @@
+<div class="container">
+  <h4>注文履歴一覧</h4>
+  <div>
+    <table class="table table-bordered">
+      <thead class="table table-secondary">
+        <tr>
+          <td>注文日</td>
+          <td>配送先</td>
+          <td>注文商品</td>
+          <td>支払金額</td>
+          <td>ステータス</td>
+          <td>注文詳細</td>
+        </tr>
+      </thead>
+
+      <tbody class="table table-bordered">
+      <% @orders.each do |order| %>
+        <tr>
+          <td></td>
+          <td>
+            <h6>〒 <%= order.postcode %></h6>
+            <h6><%= order.address %></h6>
+            <h6><%= order.shipping_name %></h6>
+          </td>
+          <td>
+            <% order.order_details.each do |detail| %>
+              <h6><%= detail.item.name %></h6>
+            <% end %>
+          </td>
+          <td><%= order.total_amount.to_s(:delimited) %></td>
+          <td><%= order.status %></td>
+          <% order do |f| %>
+          <td><%= f.submit "表示する", url: order_path(order.id), class:"btn btn-primary" %></td>
+        </tr>
+      <% end %>
+      </tbody>
+
+    </table>
+  </div>
+</div>
