@@ -1,10 +1,8 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-9">
-      <h3>注文履歴一覧</h3>
-        <table class='table-hover table-inverse'>
-          <thead>
+  <div class="row my-3">
+    <h4 class="col-10 mt-2">注文履歴一覧</h4>
+    <table class="col-12">
+      <thead class="table table-secondary">
             <tr>
               <th>購入日時</th>
               <th>購入者</th>
@@ -12,7 +10,7 @@
               <th>注文ステータス</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="table table-borderless">
             <% @orders.each do |order| %>
               <tr>
                 <td><%= link_to admin_order_path(order), class:"text-dark" do %><%= order.created_at.to_s %><% end %></td>
@@ -23,8 +21,7 @@
             <% end %>
           </tbody>
         </table>
-      <!--</%= paginate @orders %>-->
+        </div>
+      </%= paginate @orders %>
     </div>
-    <div class="col-xs-2"></div>
-  </div>
-</div>
+    
