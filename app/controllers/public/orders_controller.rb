@@ -56,8 +56,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @total = 
-    @totalamount = 0
+    @total = 0
   end
 
   def index

@@ -47,13 +47,13 @@
       <tbody>
         <tr>
           <td><%= detail.item.name %></td>
-          <td><%= detail.item.with_tax_price %></td>
+          <td><%= detail.item.with_tax_price %>円</td>
           <td><%= detail.quantitiy %></td>
           <td>
-          <%= @total =detail.item.with_tax_price * detail.quantitiy %>
+          <%= detail.item.with_tax_price * detail.quantitiy %>円
           </td>
         </tr>
-        <% @totalamount += detail.item.with_tax_price * detail.quantitiy %>
+        <% @total += detail.item.with_tax_price * detail.quantitiy %>
       </tbody>
       <% end %>
     </table>
@@ -65,15 +65,15 @@
       <tbody>
         <tr>
           <td class="table table-secondary">商品合計</td>
-          <td><%= @total.to_s(:delimited) %></td>
+          <td><%= @total.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <td class="table table-secondary">配送料</td>
-          <td><%= @order.postage %></td>
+          <td><%= @order.postage.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <td class="table table-secondary">ご請求額</td>
-          <td><%= @order.total_amount %></td>
+          <td><%= @order.total_amount.to_s(:delimited) %>円</td>
         </tr>
       </tbody>
     </table>
