@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row my-5">
 
-    <div class="col-3">
+    <div class="col-3 ganre">
       <p>ジャンル検索</p>
     </div>
 
     <div class="col-9 d-flex">
-      <% if @item.image.attached? %>
-        <%= image_tag @item.image, size: "300x200" %>
-      <% else %>
-        <%= image_tag 'no-image', size: "300x200" %>
-      <% end %>
+        <% if @item.image.attached? %>
+          <%= image_tag @item.image, size: "300x200" %>
+        <% else %>
+          <%= image_tag 'no-image', size: "300x200" %>
+        <% end %>
 
       <div class="ml-5">
         <h3><%= @item.name %></h3>
@@ -19,16 +19,20 @@
 
         <p><%= alert %></p>
 
-        <% if customer_signed_in? %>
-          <div class="my-4 px-2">
-            <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-              <%= f.hidden_field :item_id, :value => @item.id %>
-              <%= f.hidden_field :customer_id, :value => current_customer.id %>
-              <%= f.select :quantitiy, *[1..10] %>
-              <%= f.submit 'カートに入れる', class:"btn btn-success ml-5" %>
+        <% if @item.is_sale == false  %>
+          <h5>販売停止中です</h5>
+        <% else %>
+            <% if customer_signed_in? %>
+              <div class="my-4 px-2">
+                <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+                  <%= f.hidden_field :item_id, :value => @item.id %>
+                  <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                  <%= f.select :quantitiy, *[1..10] %>
+                  <%= f.submit 'カートに入れる', class:"btn btn-success ml-5" %>
+                <% end %>
+              </div>
             <% end %>
-          </div>
-        <% end %>
+         <% end %>
       </div>
 
     </div>
