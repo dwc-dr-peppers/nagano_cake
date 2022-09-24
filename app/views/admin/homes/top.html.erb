@@ -3,7 +3,7 @@
     <div class="col-xs-1"></div>
     <div class="col-xs-9">
       <h3>注文履歴一覧</h3>
-        <table class='table'>
+        <table class='table-hover table-inverse'>
           <thead>
             <tr>
               <th>購入日時</th>
@@ -15,7 +15,7 @@
           <tbody>
             <% @orders.each do |order| %>
               <tr>
-                <td><%= link_to admin_order_path(order) do %><%= order.created_at.to_s %><% end %></td>
+                <td><%= link_to admin_order_path(order), class:"text-dark" do %><%= order.created_at.to_s %><% end %></td>
                 <td><%= order.customer.family_name %><%= order.customer.first_name %></td>
                 <td><%= order.order_details.sum(:quantitiy) %></td>
                 <td><%= order.status %></td>

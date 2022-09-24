@@ -2,8 +2,18 @@
     display: unset;
 }
 
-.footer {
-  text-align: center;
+.head-line {
+  display: flex;
+  justify-content: center;
+}
+
+.actions {
+  margin: 50px 50px;
+}
+
+.dr_peppers {
+  display: flex;
+  justify-content: center;
 }
 
 .item_box {
