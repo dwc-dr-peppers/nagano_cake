@@ -48,6 +48,20 @@
     padding: 0.5px 1px;
     margin: 50px 50px 10px;
     border: double 5px #a9a9a9;
+
+.not-sale-img {
+  opacity: 0.3;
+}
+
+.not-sale {
+  position: relative;
+}
+
+.not-sale p {
+  position: absolute;
+  color: black;
+  top: 45%;
+  left: 25%;
 }
 
 /*
