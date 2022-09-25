@@ -29,9 +29,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    #@order.payment_way = Order.payment_ways[params[:order][:payment_way]]
     cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    @order.payment_way = params[:order][:payment_method]
+    @order.payment_way = params[:order][:payment_way].to_i
     @order.customer_id = current_customer.id
     @order.save
     if params[:order][:address_select] == "3"
@@ -55,7 +56,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = order.find(params[:id])
+    @order = Order.find(params[:id])
+    @total = 0
   end
 
   def index
@@ -65,7 +67,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :shipping_name, :address, :postcode, :postage, :total_amount)
+    params.require(:order).permit(:shipping_name, :address, :postcode, :postage, :total_amount)
   end
 
 end
