@@ -51,35 +51,45 @@
   </div>
 
   <%= form_with model: @order, url: orders_path, method: :post do |f| %>
-  <div>支払方法</div>
-    <div>
-      <% if params[:order][:payment_way] == "credit_card" %>
-        <%= f.label :payment_way, Order.payment_ways_i18n[:credit_card] %>
-        <%= f.hidden_field :payment_way, :value => Order.payment_ways[:credit_card] %>
-      <% else %>
-        <%= f.label :payment_way, Order.payment_ways_i18n[:transfer]%>
-        <%= f.hidden_field :payment_way, :value => Order.payment_ways[:transfer] %>
-      <% end %>
+    <div class="container">
+      <div class="row">
+        <strong>支払方法</strong>
+        <div class="col">
+          <% if params[:order][:payment_way] == "credit_card" %>
+            <%= f.label :payment_way, Order.payment_ways_i18n[:credit_card] %>
+            <%= f.hidden_field :payment_way, :value => Order.payment_ways[:credit_card] %>
+          <% else %>
+            <%= f.label :payment_way, Order.payment_ways_i18n[:transfer]%>
+            <%= f.hidden_field :payment_way, :value => Order.payment_ways[:transfer] %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <%# 新しいお届け先のデータ %>
     <% if params[:order][:address_select] == "3" %>
       <%= f.hidden_field :address_select, :value => 3 %>
     <% end %>
 
-  <div>お届け先</div>
-      <div>
-        <%= "〒" %>
-        <%= @order.postcode %>
-        <%= f.hidden_field :postcode, :value => @order.postcode %>
-        <%= @order.address %>
-        <%= f.hidden_field :address, :value => @order.address %>
-        <%= @order.shipping_name %>
-        <%= f.hidden_field :shipping_name, :value => @order.shipping_name %>
+    <div class="container">
+      <div class="row">
+        <strong>お届け先</strong>
+        <div class="col">
+          <%= "〒" %>
+          <%= @order.postcode %>
+          <%= f.hidden_field :postcode, :value => @order.postcode %>
+          <%= @order.address %>
+          <%= f.hidden_field :address, :value => @order.address %>
+          <br>
+          <%= @order.shipping_name %>
+          <%= f.hidden_field :shipping_name, :value => @order.shipping_name %>
+        </div>
       </div>
-        <%= f.hidden_field :postage, :value => @postage %>
-        <%= f.hidden_field :total_amount, :value => @totalamount %>
-      <div>
-        <%= f.submit "注文を確定する", class:"btn btn-success mx-auto" %>
-      </div>
-      <% end %>
+    </div>
+      <%= f.hidden_field :postage, :value => @postage %>
+      <%= f.hidden_field :total_amount, :value => @totalamount %>
+  </div>
+  <div class="row">
+    <%= f.submit "注文を確定する", class:"btn btn-success mx-auto" %>
+  </div>
+  <% end %>
 </div>
