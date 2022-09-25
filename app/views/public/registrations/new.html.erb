@@ -1,4 +1,7 @@
-  <h2 class="head-line title_h2 text-center"><i class="fas fa-user-edit"></i>新規会員登録</h2>
+  <div class="container">
+	  <div class="row my-3">
+			<h4 class="float-left p-2 mb-2 bg-light text-dark"><i class="fas fa-user-edit"></i>新規会員登録</h4>
+
 
   <div class="text-left">
     <%= form_with model: @customer, url: customer_registration_path do |f| %>
@@ -6,38 +9,38 @@
       <div class="field form-group col-xs-5">
         <%= f.label :"名前", class: "col-sm-2 control-label" %>
         <%= f.label :"(姓)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :family_name, autofocus: true, required: true, class: "col-sm-3 form-control-static name" %>
+        <%= f.text_field :family_name, :placeholder => "令和", autofocus: true, required: true, class: "col-sm-3 form-control-static name" %>
         <%= f.label :"(名)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :first_name, autofocus: true, required: true, class: "col-sm-3 form-control-static name" %>
+        <%= f.text_field :first_name, :placeholder => "道子", autofocus: true, required: true, class: "col-sm-3 form-control-static name" %>
       </div>
 
       <div class="field form-group col-xs-5">
         <%= f.label :"フリガナ", class: "col-sm-2 control-label" %>
         <%= f.label :"(セイ)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :family_name_kana, autofocus: true, required: true, class: "col-sm-3 form-control-static name" %>
+        <%= f.text_field :family_name_kana, :placeholder => "レイワ", autofocus: true, required: true, class: "col-sm-3 form-control-static name" %>
         <%= f.label :"(メイ)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :first_name_kana, autofocus: true, required: true, class: "col-sm-3 form-control-static name" %>
+        <%= f.text_field :first_name_kana, :placeholder => "ミチコ", autofocus: true, required: true, class: "col-sm-3 form-control-static name" %>
       </div>
 
 
       <div class="form-group col-xs-5">
       <%= f.label :"メールアドレス", class: "col-sm-3 control-label" %>
-      <%= f.text_field :email, required: true, class: "col-sm-6 form-control-static"%>
+      <%= f.text_field :email, :placeholder => "sample@exsample", required: true, class: "col-sm-6 form-control-static"%>
       </div>
 
       <div class="form-group col-xs-5">
       <%= f.label :"郵便番号（ハイフンなし）", autofocus: true, class: "col-sm-3 control-label" %>
-      <%= f.text_field :postcode, required: true, class: "col-sm-4 form-control-static postal_code" %>
+      <%= f.text_field :postcode, :placeholder => "0000000", required: true, class: "col-sm-4 form-control-static postal_code" %>
       </div>
 
       <div class="form-group col-xs-7">
       <%= f.label :"住所", class: "col-sm-3 control-label" %>
-      <%= f.text_field :address, autofocus: true, required: true, class: "col-sm-6 form-control-static address"  %>
+      <%= f.text_field :address, :placeholder => "東京都渋谷区代々木1-1", autofocus: true, required: true, class: "col-sm-6 form-control-static address"  %>
       </div>
 
       <div class="form-group col-xs-7">
       <%= f.label :"電話番号（ハイフンなし）", class: "col-sm-3 control-label" %>
-      <%= f.text_field :telephone_number, required: true, class: "col-sm-4 form-control-static" %>
+      <%= f.text_field :telephone_number, :placeholder => "00000000000", required: true, class: "col-sm-4 form-control-static" %>
       </div>
 
 
@@ -56,12 +59,27 @@
       </div>
     <% end %>
   </div>
+  </div>
+
+  <div class="row">
+  <div class="col-xs-9">
+    <h6 class="float-left p-2 mb-2 bg-light text-dark">既に登録済みの方</h6>
+  </div>
+</div>
+  <div class="row ml-5 my-3">
+    <div class="col-xs-9">
+        <u><%= link_to "こちら", new_session_path(resource_name), data: {"turbolinks" => false}, class: "btn-link" %></u>からログインしてください。
+     </div>
+    </div>
+  </div>
 
     <div class="head-line">
-      <h2>既に登録済みの方</h2>
+      <h2></h2>
     </div>
     <div class="head-line">
-      <p> <%= link_to "こちら", new_session_path(resource_name), data: {"turbolinks" => false}, class: "btn-link" %>からログインしてください。</p>
+      <p> </p>
     </div>
+
+</div>
 
 
