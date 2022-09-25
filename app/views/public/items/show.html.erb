@@ -1,8 +1,18 @@
 <div class="container">
   <div class="row my-5">
 
-    <div class="col-3 ganre">
-      <p>ジャンル検索</p>
+    <div class="col-3">
+      <h5>ジャンル検索</h5>
+      <%= form_with model: @genre, class: 'boards__searchForm' do %>
+        <% @genres.each do |genre| %>
+        <div class="tag-box">
+            <%= link_to genre.name, items_path(name: genre.id) %>
+          </div>
+        <% end %>
+          <div class="tag-box">
+            <%= link_to "全ての商品", items_path %>
+          </div>
+      <% end %>
     </div>
 
     <div class="col-9 d-flex">
