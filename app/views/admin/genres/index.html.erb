@@ -6,13 +6,13 @@
 
 <div class="container mx-6">
   <div class="row col-7">
-  <div class="form-group">
-    <%= form_with model:@genre, url: '/admin/genres', method: :post do |f| %>
-      <%= f.label "ジャンル名", class: "h6 font-weight-bold mr-5" %>
-      <%= f.text_field :name, placeholder: "ジャンル名", class: "mr-5" %>
-      <%= f.submit "新規登録", class: 'btn btn-success font-weight-bold px-5' %>
-    <% end %>
-  </div>
+    <div class="form-group">
+      <%= form_with model:@genre, url: '/admin/genres', method: :post do |f| %>
+        <%= f.label "ジャンル名", class: "h6 font-weight-bold mr-5" %>
+        <%= f.text_field :name, placeholder: "ジャンル名", class: "mr-5" %>
+        <%= f.submit "新規登録", class: 'btn btn-success font-weight-bold px-5' %>
+      <% end %>
+    </div>
   </div>
 </div>
 
