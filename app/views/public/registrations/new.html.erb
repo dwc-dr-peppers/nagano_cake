@@ -25,12 +25,12 @@
 
       <div class="form-group col-xs-5">
       <%= f.label :"メールアドレス", class: "col-sm-3 control-label" %>
-      <%= f.text_field :email, :placeholder => "sample@exsample", required: true, class: "col-sm-6 form-control-static"%>
+      <%= f.text_field :email, :placeholder => "sample@exsample", required: true,autofocus: true, class: "col-sm-6 form-control-static"%>
       </div>
 
       <div class="form-group col-xs-5">
       <%= f.label :"郵便番号（ハイフンなし）", autofocus: true, class: "col-sm-3 control-label" %>
-      <%= f.text_field :postcode, :placeholder => "0000000", required: true, class: "col-sm-4 form-control-static postal_code" %>
+      <%= f.text_field :postcode, :placeholder => "0000000", required: true,autofocus: true, class: "col-sm-4 form-control-static postal_code" %>
       </div>
 
       <div class="form-group col-xs-7">
@@ -40,7 +40,7 @@
 
       <div class="form-group col-xs-7">
       <%= f.label :"電話番号（ハイフンなし）", class: "col-sm-3 control-label" %>
-      <%= f.text_field :telephone_number, :placeholder => "00000000000", required: true, class: "col-sm-4 form-control-static" %>
+      <%= f.text_field :telephone_number, :placeholder => "00000000000", required: true,autofocus: true, class: "col-sm-4 form-control-static" %>
       </div>
 
 
