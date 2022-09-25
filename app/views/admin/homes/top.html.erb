@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row my-3">
     <h4 class="col-10 mt-2">注文履歴一覧</h4>
+    </div>
+    <div class="row my-3">
     <table class="col-12">
       <thead class="table table-secondary">
             <tr>
@@ -21,7 +23,11 @@
             <% end %>
           </tbody>
         </table>
-        </div>
-      </%= paginate @orders %>
+      </div>
+        <div class="top_page">
+         <%= paginate @orders %>
+         </div>
+
+
     </div>
-    
+
