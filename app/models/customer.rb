@@ -11,10 +11,15 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
-  
+
   def full_name
     self.family_name + " " + self.first_name
   end
+
+  def full_name_kana
+    self.family_name_kana + " " + self.first_name_kana
+  end
+
 
   validates :family_name, presence: true
   validates :first_name, presence: true
