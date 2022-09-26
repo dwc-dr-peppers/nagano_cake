@@ -40,7 +40,7 @@
       <div class="container">
         <%= f.radio_button :address_select, 2, required: true %>
         <%= f.label :address_id, "登録済住所から選択" %>
-        <div class="row cols-12">
+        <div class="row">
           <div class="col-1"></div>
           <div class="col-11">
            <%= f.select :address_id, options_from_collection_for_select(@shipping_addresses, :id, :address_display), class:"option_value" %>
@@ -50,7 +50,7 @@
       <div class="container form-group">
         <%= f.radio_button :address_select, 3, required: true %>
         <%= f.label :address_id, "新しいお届け先" %>
-        <div class="row row-cols-12 from-group">
+        <div class="row from-group">
           <div class="col-3">
             <%= f.label "郵便番号(ハイフンなし)", class:"col-form-label" %>
           </div>
@@ -58,7 +58,7 @@
             <%= f.text_field :postcode, class:"form-control-sm col-5" %>
           </div>
         </div>
-        <div class="row row-cols-12 from-group">
+        <div class="row from-group">
           <div class="col-3">
             <%= f.label "住所", class:"col-form-label" %>
           </div>
@@ -66,7 +66,7 @@
             <%= f.text_field :address, class:"form-control-sm col-11" %>
           </div>
         </div>
-        <div class="row row-cols-12 from-group">
+        <div class="row from-group">
           <div class="col-3">
             <%= f.label "宛名", class:"col-form-label" %>
           </div>
