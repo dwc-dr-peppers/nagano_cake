@@ -32,6 +32,11 @@
         </table>
       </div>
 
+      <% @order.order_details.each do |detail| %>
+        <% detail.item.with_tax_price * detail.quantitiy %>
+        <% @total += detail.item.with_tax_price * detail.quantitiy %>
+      <% end %>
+
       <div class="col-3 mt-3">
         <strong>請求情報</strong>
         <table class="table table-bordered mt-2">
