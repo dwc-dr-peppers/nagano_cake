@@ -30,6 +30,6 @@ class Public::CustomersController < ApplicationController
 
   private
   def customer_params
-    params.require(:customer).permit(:family_name, :first_name_kana, :family_name_kana, :first_name_kana, :postcode, :address, :telephone_number, :email)
+    params.require(:customer).permit(:family_name, :first_name, :first_name_kana, :family_name_kana, :first_name_kana, :postcode, :address, :telephone_number, :email)
   end
 end
