@@ -22,7 +22,12 @@
             <td><%= customer.id %></td>
             <td><%= link_to customer.full_name, admin_customer_path(customer.id), class: "text-dark border-bottom border-dark " %></td>
             <td><%= customer.email %></td>
-            <td><%= customer.is_deleted? ? '退会' : '有効' %></td>
+            <% if customer.is_deleted ==false %>
+            <td class="text-success font-weight-bold">有効</td>
+            <% else %>
+            <td class="text-secondary font-weight-bold">退会</td>
+            <% end %>
+            <%#= customer.is_deleted? ? '退会' : '有効' %>
           </tr>
         <% end %>
         </tbody>
