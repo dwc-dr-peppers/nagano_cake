@@ -51,7 +51,12 @@
               	<% @items.each do |i| %>
               	<div class="new_arrival">
               		<%= link_to item_path(i) do %>
-              			<%= image_tag i.image, size:"200x150" %><% end %><br>
+              			<% if i.image.attached? %>
+              			  <%= image_tag i.image, size: "200x150" %><br>
+              			<% else %>
+              			  <%= image_tag 'no-image', size: "200x150" %><br>
+              			<% end %>
+              		<% end %>
               				  商品名:<%= i.name %><br>
               				  価格:¥ <%= i.price %>
               	  	</div>
