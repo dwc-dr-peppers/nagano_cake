@@ -3,24 +3,27 @@ class Public::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
+    @genres = Genre.all
   end
 
   def index
+    @genres = Genre.all
+    @items = params[:name].present? ? Genre.find(params[:name]).items : Item.page(params[:page]).per(8)
+
     if params[:name]
       @item_count = Genre.find(params[:name]).items.count
-    elsif params[:page]
-      @item_count = Item.page(params[:page]).count
+      @items = Genre.find(params[:name]).items.page(params[:page]).per(8)
+      @index_name = Genre.find(params[:name]).name
+
     else
       @item_count = Item.count
+      @items = Item.page(params[:page]).per(8)
+      @index_name = "商品"
 
     end
 
-    #@items_all = Item.all
-    @genres = Genre.all
-    @items = params[:name].present? ? Genre.find(params[:name]).items : Item.all
-    @items_page = Item.page(params[:page]).per(6)
-
   end
+
 
   private
 
