@@ -8,10 +8,13 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "home/about" => "homes#about", as: "about"
     get "customers/my_page" => "customers#show"
+
     get "customers/information/edit" => "customers#edit"
     patch "customers/information" => "customers#update"
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdraw" => "customers#withdraw"
+
+
     resources :items
 
     resources :cart_items do
@@ -19,7 +22,9 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
-    resources :orders
+    get "/orders/complete" => "orders#complete"
+    post "/orders/confirm" => "orders#confirm"
+    resources :orders, onry: [:new, :create, :index, :show]
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 

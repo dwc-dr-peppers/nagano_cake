@@ -1,3 +1,7 @@
+.nav-link {
+    display: unset;
+}
+
 .main-image {
   width: 80%;
   height: 80vh;
@@ -23,6 +27,46 @@
   margin: 30px auto;
 }
 
+<<<<<<< HEAD:app/assets/stylesheets/application.css
+=======
+.check_box {
+    width: 12%;
+    padding: 0.5px 1px;
+    margin: 50px 50px 10px;
+    border: double 5px #a9a9a9;
+}
+
+.check_box h5 {
+    margin: 10px 10px 10px;
+}
+
+.tag-box {
+    margin: 5px 0 5px 5px;
+    padding: 5px 0 5px 5px;
+}
+
+.check_box_index {
+    width: 60%;
+    padding: 0.5px 1px;
+    margin: 50px 50px 10px;
+    border: double 5px #a9a9a9;
+}
+
+.not-sale-img {
+  opacity: 0.3;
+}
+
+.not-sale {
+  position: relative;
+}
+
+.not-sale p {
+  position: absolute;
+  color: black;
+  top: 45%;
+  left: 25%;
+}
+>>>>>>> origin/develop:app/assets/stylesheets/application.scss
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
