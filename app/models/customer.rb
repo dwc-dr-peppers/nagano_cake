@@ -8,6 +8,19 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :shipping_addresses, dependent: :destroy
 
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
+  def full_name
+    self.family_name + " " + self.first_name
+  end
+
+  def full_name_kana
+    self.family_name_kana + " " + self.first_name_kana
+  end
+
+
   validates :family_name, presence: true
   validates :first_name, presence: true
   validates :family_name_kana, presence: true
