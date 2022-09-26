@@ -31,7 +31,7 @@ class Public::OrdersController < ApplicationController
   def create
     cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    @order.payment_way = params[:order][:payment_method]
+    @order.payment_way = params[:order][:payment_way]
     @order.customer_id = current_customer.id
     @order.save
     if params[:order][:address_select] == "3"
@@ -65,7 +65,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :shipping_name, :address, :postcode, :postage, :total_amount)
+    params.require(:order).permit(:payment_way, :shipping_name, :address, :postcode, :postage, :total_amount)
   end
 
 end

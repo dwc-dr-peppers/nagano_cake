@@ -44,12 +44,12 @@
   <%= form_with model: @order, url: orders_path, method: :post do |f| %>
   <div>支払方法</div>
     <div>
-      <% if params[:order][:payment_method] == "credit_card" %>
-        <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
-        <%= f.hidden_field :payment_method, :value => Order.payment_methods.key(0) %>
+      <% if params[:order][:payment_way] == "credit_card" %>
+        <%= f.label :payment_way, Order.payment_ways_i18n[:credit_card] %>
+        <%= f.hidden_field :payment_way, :value => Order.payment_ways.key(0) %>
       <% else %>
-        <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
-        <%= f.hidden_field :payment_method, :value => Order.payment_methods.key(1) %>
+        <%= f.label :payment_way, Order.payment_ways_i18n[:transfer]%>
+        <%= f.hidden_field :payment_way, :value => Order.payment_ways.key(1) %>
       <% end %>
     </div>
     <%# 新しいお届け先のデータ %>

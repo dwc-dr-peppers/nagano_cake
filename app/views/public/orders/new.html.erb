@@ -5,12 +5,12 @@
     <div class="container">
       <strong>支払方法</strong>
       <div class="row">
-        <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-        <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+        <%= f.radio_button :payment_way, Order.payment_ways.key(0) %>
+        <%= f.label :payment_way, Order.payment_ways_i18n[:credit_card] %>
       </div>
       <div class="row">
-        <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-        <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+        <%= f.radio_button :payment_way, Order.payment_ways.key(1) %>
+        <%= f.label :payment_way, Order.payment_ways_i18n[:transfer]%>
       </div>
     </div>
 

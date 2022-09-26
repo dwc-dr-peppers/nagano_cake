@@ -17,14 +17,6 @@
 				<div class="row my-1 orders">〒<%= @order.postcode %>　<%= @order.address %></div>
 				<div class="row my-1 orders"><%= @order.shipping_name %></div>
 				<div class="row my-1 orders"><%= @order.payment_way_i18n %></div>
-					<!--</%= form_with model: @order, url: orders_path, method: :post do |f| %>-->
-					<!--</% if @order.payment_way == "0" %>-->
-     <!--   	</%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>-->
-     <!-- 		</% else %>-->
-     <!--   	</%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>-->
-     <!-- 		</% end %>-->
-     <!-- 		</% end %>-->
-
 				<div class="row my-1 orders"><%= form_with model:@order, url: admin_order_path(@order) do |f|%>
 			  <%= f.select :status, Order.statuses_i18n.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %>
 				<%= f.submit '更新',class: 'btn btn-primary' %>
