@@ -11,4 +11,11 @@ class Order < ApplicationRecord
   enum payment_way: { credit_card: 0, transfer: 1 }
   enum status: { stand_by: 0, payment: 1, production: 2, preparation: 3, sent: 4 }
 
+
+  def with_tax_price
+    #税込価格を求めるメソッド
+    (price * 1.1).floor
+  end
+
+
 end
