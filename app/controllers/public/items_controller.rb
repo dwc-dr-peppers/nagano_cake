@@ -8,16 +8,16 @@ class Public::ItemsController < ApplicationController
 
   def index
     @genres = Genre.all
-    @items = params[:name].present? ? Genre.find(params[:name]).items : Item.page(params[:page]).per(6)
+    @items = params[:name].present? ? Genre.find(params[:name]).items : Item.page(params[:page]).per(8)
 
     if params[:name]
       @item_count = Genre.find(params[:name]).items.count
-      @items = Genre.find(params[:name]).items.page(params[:page]).per(6)
+      @items = Genre.find(params[:name]).items.page(params[:page]).per(8)
       @index_name = Genre.find(params[:name]).name
 
     else
       @item_count = Item.count
-      @items = Item.page(params[:page]).per(6)
+      @items = Item.page(params[:page]).per(8)
       @index_name = "商品"
 
     end

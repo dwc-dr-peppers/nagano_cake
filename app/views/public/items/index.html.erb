@@ -1,23 +1,13 @@
-<div class="container">
-  <div class="row my-5">
+<div class="container-fluid">
+  <div class="row my-5 mx-0">
 
-      <div class="col-3">
-        <h5>ジャンル検索</h5>
-        <%= form_with model: @genre, class: 'boards__searchForm' do %>
-          <% @genres.each do |genre| %>
-            <div class="tag-box">
-              <%= link_to genre.name, items_path(name: genre.id) %>
-            </div>
-          <% end %>
-            <div class="tag-box">
-              <%= link_to "全ての商品", items_path %>
-            </div>
-        <% end %>
+      <div class="col-2">
+        <%= render 'public/shared/genre_search', genres: @genres, genre: @genre %>
       </div>
 
 
 
-    <div class="col-9">
+    <div class="col-10">
       <div>
         <h3><strong><%= @index_name %>一覧</strong><small class="text-muted">(全<%= @item_count %>件)</small></h3>
       </div>
@@ -52,7 +42,7 @@
                 <% end %>
             <% end %>
             <p class="mt-2"><%= item.name %></p>
-            <p>¥ <%= item.price.to_s(:delimited) %></p>
+            <p>¥ <%= item.with_tax_price.to_s(:delimited) %></p>
           </div>
         <% end %>
       </div>
