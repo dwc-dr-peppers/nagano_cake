@@ -1,11 +1,13 @@
-<div class="container">
-  <div class="row my-5">
+<div class="container-fluid">
+  <div class="row my-5 mx-0">
 
-    <div class="col-3 ganre">
-      <p>ジャンル検索</p>
+    <div class="col-2">
+      <%= render 'public/shared/genre_search', genres: @genres, genre: @genre %>
+    </div>
+    <div class="col-2">
     </div>
 
-    <div class="col-9 d-flex">
+    <div class="col-8 d-flex">
         <% if @item.image.attached? %>
           <%= image_tag @item.image, size: "300x200" %>
         <% else %>
