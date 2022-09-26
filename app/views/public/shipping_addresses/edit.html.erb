@@ -1,23 +1,23 @@
 <div class="container">
 
-  <div class="row row-col-9">
+  <div class="row my-3 row-col-9">
     <div class="col-1"></div>
     <h4 class="col">配送先編集</h4>
   </div>
 
-  <div>
+  <div class="my-4 mx-5">
     <%= form_with model: @shippingaddress, url: shipping_address_path(@shippingaddress), method: :patch do |f| %>
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
-      <div class="row row-cols-12 from-group">
+      <div class="row row-cols-12 from-group mb-1">
         <div class="col-3"><%= f.label "郵便番号(ハイフンなし)", class:"form-label" %></div>
         <div class="col-3"><%= f.text_field :postcode %></div>
         <div class="col-3"></div>
         <div class="col-3"></div>
       </div>
 
-      <div class="row row-cols-12 from-group">
+      <div class="row row-cols-12 from-group mb-1">
         <div class="col-3"><%= f.label "住所", class:"form-label" %></div>
-        <div class="col-7"><%= f.text_field :address, class:"col-12" %></div>
+        <div class="col-7"><%= f.text_field :address, size: 60 %></div>
         <div class="col-1"></div>
         <div class="col-1"></div>
       </div>
@@ -25,8 +25,8 @@
       <div class="row row-cols-12 from-group">
         <div class="col-3"><%= f.label "宛名", class:"form-label" %></div>
         <div class="col-3"><%= f.text_field :name %></div>
-        <div class="col-4"></div>
-        <div class="col-2"><%= f.submit '変更内容を保存', class:"col-12 btn btn-success" %></div>
+        <div class="col-3"></div>
+        <div class="col-3"><%= f.submit '変更内容を保存', class:"btn btn-success px-3 ml-5" %></div>
       </div>
     <% end %>
   </div>
