@@ -2,6 +2,41 @@
     display: unset;
 }
 
+.admin_top {
+  margin: 10px 10px 20px 0;
+}
+
+.top_page {
+  display: flex;
+  justify-content: center;
+}
+
+.order_top {
+  margin: 100px 0 100px 0;
+}
+
+.head-line {
+  display: flex;
+  justify-content: center;
+}
+
+.actions {
+  margin: 50px 50px;
+}
+
+.dr_peppers {
+  display: flex;
+  justify-content: center;
+}
+
+.item_box {
+  display: flex;
+}
+
+.top_new {
+  margin: 0 50px 0;
+}
+
 .main-image {
   width: 80%;
   height: 80vh;
@@ -14,6 +49,7 @@
 }
 
 .about {
+  margin: 50px 0 100px 0;
   text-align: center;
 }
 
@@ -28,10 +64,13 @@
 }
 
 .check_box {
-    width: 12%;
-    padding: 0.5px 1px;
-    margin: 50px 50px 10px;
+    width: 90%;
+    margin: 30px 0 0;
     border: double 5px #a9a9a9;
+}
+
+.top_under {
+  margin: 50px 0 0 0;
 }
 
 .check_box h5 {
@@ -41,6 +80,10 @@
 .tag-box {
     margin: 5px 0 5px 5px;
     padding: 5px 0 5px 5px;
+}
+
+.items-more {
+  text-align:right;
 }
 
 .check_box_index {
@@ -64,6 +107,26 @@
   top: 45%;
   left: 25%;
 }
+
+.orders {
+    font-size: 18px;
+}
+
+.admin_index {
+  font-waight:　bolder；
+}
+
+.example3 td{
+    font-size: 20px;
+    position: absolute;
+    bottom: 10px;
+
+}
+
+.new_link {
+  margin: 5px 30px 0 30px;
+}
+
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
